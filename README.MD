@@ -7,8 +7,8 @@
 ![tqdm](https://img.shields.io/badge/tqdm-4.67.0-lightgrey)
 
 
-**Versión:** 0.0.1   
-**Autor:** [IZAINEA](mailto:czaineam@unidadbusqueda.gov.co)  
+**Versión:** 0.0.0
+**Autor:** [IZAINEA](mailto:cizaineam@gmail.com)  
 
 
 ## Descripción
