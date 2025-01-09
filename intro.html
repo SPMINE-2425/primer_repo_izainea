@@ -1,0 +1,592 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Introducción &#8212; Seminario de Programación</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Instalación y configuración previa" href="Cuadernos/cap0.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="#">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Seminario de Programación - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="Seminario de Programación - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1 current active">
+                <a class="reference internal" href="#">
+                    Introducción
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Cuadernos/cap0.html">Instalación y configuración previa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Cuadernos/cap1.html">Capítulo 1: Gestión de Versiones y Dependencias con Poetry</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/intro.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introducción</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposito">Propósito</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-veremos">¿Qué veremos?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repositorios-y-dependencias">Repositorios y Dependencias</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulacion-de-datos-provenientes-de-fuentes-diversas">Manipulación de Datos Provenientes de Fuentes Diversas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creacion-de-apis-funcionales">Creación de APIs Funcionales</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desarrollo-de-aplicaciones-interactivas">Desarrollo de Aplicaciones Interactivas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integracion-y-operaciones-en-machine-learning">Integración y Operaciones en Machine Learning</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metodologia">Metodología</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introduccion">
+<h1>Introducción<a class="headerlink" href="#introduccion" title="Link to this heading">#</a></h1>
+<p>El Seminario de Programación está diseñado para abordar problemas prácticos en programación y análisis de datos, enfocándose en habilidades clave que trascienden herramientas específicas. Este libro es una guía para construir soluciones robustas y escalables que puedan adaptarse a cambios inevitables en equipos, tecnologías y contextos.</p>
+<section id="proposito">
+<h2>Propósito<a class="headerlink" href="#proposito" title="Link to this heading">#</a></h2>
+<p>El objetivo principal es desarrollar habilidades técnicas y organizativas que permitan diseñar, implementar y mantener proyectos eficientes. El enfoque se centra en el uso de herramientas modernas como Python, Git, FastAPI y Streamlit, asegurando que los proyectos sean gestionados de manera profesional, reproducible y colaborativa.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Preservar el conocimiento en los proyectos
+La salida de un miembro clave del equipo no debería poner en riesgo el conocimiento acumulado. La organización de repositorios y el uso de gestores de dependencias garantizan que los proyectos sean resilientes al cambio.</p>
+</div>
+</section>
+<section id="que-veremos">
+<h2>¿Qué veremos?<a class="headerlink" href="#que-veremos" title="Link to this heading">#</a></h2>
+<section id="repositorios-y-dependencias">
+<h3>Repositorios y Dependencias<a class="headerlink" href="#repositorios-y-dependencias" title="Link to this heading">#</a></h3>
+<p>El trabajo en equipo se enfrenta a menudo al problema de la desorganización en repositorios y dependencias. La falta de una estructura clara en el repositorio puede derivar en conflictos de versiones, pérdida de información crítica o duplicación de esfuerzos. Adicionalmente, la ausencia de documentación adecuada sobre las dependencias puede complicar la configuración del entorno, haciendo que los nuevos integrantes del equipo pierdan tiempo intentando replicar configuraciones que deberían ser automáticas.</p>
+<p>Prácticas como el uso de ramas bien definidas en Git y la adopción de gestores de dependencias como Poetry permiten resolver estos problemas. Git asegura un control eficiente de versiones, habilitando el trabajo paralelo y colaborativo sin riesgo de sobreescribir cambios importantes. Poetry, por otro lado, garantiza que las dependencias del proyecto estén claramente especificadas, facilitando la creación de entornos reproducibles y eliminando errores relacionados con incompatibilidades de versiones.</p>
+<p>En equipos dinámicos, donde los integrantes y herramientas cambian con frecuencia, estas prácticas son indispensables para mantener la continuidad y la calidad del trabajo. Al implementar estas estrategias, se crea un ecosistema de trabajo que minimiza riesgos y optimiza la colaboración.</p>
+<figure class="align-default" id="importancia-de-los-repositorios">
+<img alt="_images/1-github.png" src="_images/1-github.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Importancia de los repositorios</span><a class="headerlink" href="#importancia-de-los-repositorios" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="manipulacion-de-datos-provenientes-de-fuentes-diversas">
+<h3>Manipulación de Datos Provenientes de Fuentes Diversas<a class="headerlink" href="#manipulacion-de-datos-provenientes-de-fuentes-diversas" title="Link to this heading">#</a></h3>
+<p>La consolidación de datos provenientes de múltiples fuentes con formatos inconsistentes es un desafío recurrente en proyectos de análisis y ciencia de datos. Es común encontrarse con datos provenientes de hojas de cálculo, bases de datos relacionales, servicios en la nube y APIs públicas o privadas, cada uno con sus propios esquemas y niveles de calidad.</p>
+<p>El uso de pandas permite automatizar procesos de limpieza, transformación y unión de datos, ahorrando tiempo y reduciendo errores en los análisis posteriores. Por ejemplo, APIs pueden proporcionar datos en formatos como JSON o XML, que requieren transformaciones específicas antes de integrarse con otras fuentes. Pandas, junto con librerías auxiliares como <code class="docutils literal notranslate"><span class="pre">requests</span></code> o <code class="docutils literal notranslate"><span class="pre">json</span></code>, facilita la extracción y normalización de estos datos para adaptarlos a los flujos de trabajo establecidos.</p>
+<p>Un enfoque efectivo para trabajar con múltiples fuentes incluye:</p>
+<ul class="simple">
+<li><p><strong>Validación de formatos:</strong> Detectar y corregir inconsistencias en las estructuras de datos.</p></li>
+<li><p><strong>Automatización de procesos:</strong> Usar scripts reproducibles para limpiar y transformar datos.</p></li>
+<li><p><strong>Documentación clara:</strong> Registrar cada paso del preprocesamiento para garantizar trazabilidad.</p></li>
+</ul>
+<p>Integrar datos de diversas fuentes no solo mejora la calidad del análisis, sino que también permite tomar decisiones más informadas al combinar perspectivas complementarias de los datos disponibles.</p>
+<figure class="align-default" id="manipulacion-de-datos-avanzada">
+<img alt="_images/2-datos.png" src="_images/2-datos.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Manipulación de datos avanzada</span><a class="headerlink" href="#manipulacion-de-datos-avanzada" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>El problema de datos inconsistentes
+Los errores en los datos pueden propagarse a los modelos y decisiones. Este curso se enfoca en herramientas prácticas para detectar y resolver problemas en la manipulación de datos.</p>
+</div>
+</section>
+<section id="creacion-de-apis-funcionales">
+<h3>Creación de APIs Funcionales<a class="headerlink" href="#creacion-de-apis-funcionales" title="Link to this heading">#</a></h3>
+<p>Las APIs constituyen el núcleo de muchas aplicaciones modernas. Su capacidad para interconectar sistemas y manejar flujos de datos en tiempo real las hace indispensables en la arquitectura tecnológica actual. La creación de servicios eficientes con FastAPI no solo permite integrar y gestionar datos de forma segura, sino que también facilita su consumo por aplicaciones externas o usuarios finales.</p>
+<p>FastAPI ofrece características avanzadas como la validación automática de datos, la generación de documentación interactiva y un rendimiento superior gracias a su base en ASGI (Asynchronous Server Gateway Interface). Estas capacidades la convierten en una herramienta ideal para construir servicios escalables y fáciles de mantener.</p>
+<p>Por ejemplo, una API bien diseñada puede servir como un puente entre un sistema de inventarios y una aplicación móvil utilizada por clientes, permitiendo actualizaciones en tiempo real sobre disponibilidad de productos. Además, las APIs son esenciales para habilitar la interoperabilidad entre aplicaciones empresariales, integrando múltiples sistemas sin necesidad de dependencias directas.</p>
+<p>Un enfoque práctico para el diseño de APIs con FastAPI incluye:</p>
+<ul class="simple">
+<li><p><strong>Definir endpoints claros y específicos:</strong> Cada endpoint debe tener una responsabilidad única y estar bien documentado.</p></li>
+<li><p><strong>Incluir autenticación y autorización:</strong> Para proteger los datos sensibles y controlar el acceso a los recursos.</p></li>
+<li><p><strong>Automatizar pruebas:</strong> Asegurar que los servicios funcionen correctamente ante diferentes escenarios de uso.</p></li>
+<li><p><strong>Monitorización y escalabilidad:</strong> Implementar métricas y herramientas para evaluar el rendimiento y escalar según la demanda.</p></li>
+</ul>
+<p>En un entorno donde los sistemas deben comunicarse eficientemente, la habilidad de diseñar y construir APIs robustas no solo optimiza procesos, sino que también impulsa la capacidad de innovación de los equipos de desarrollo.</p>
+<figure class="align-default" id="creacion-de-apis-con-fastapi">
+<img alt="_images/3-api.png" src="_images/3-api.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Creación de APIs con FastAPI</span><a class="headerlink" href="#creacion-de-apis-con-fastapi" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>La importancia de las APIs
+Las APIs son la columna vertebral de la comunicación entre sistemas. Su diseño y mantenimiento adecuados son esenciales para la integración de aplicaciones y la automatización de procesos.</p>
+</div>
+</section>
+<section id="desarrollo-de-aplicaciones-interactivas">
+<h3>Desarrollo de Aplicaciones Interactivas<a class="headerlink" href="#desarrollo-de-aplicaciones-interactivas" title="Link to this heading">#</a></h3>
+<p>La capacidad de comunicar resultados analíticos es vital en cualquier proyecto. Streamlit proporciona las herramientas necesarias para construir aplicaciones dinámicas que traduzcan análisis y modelos en visualizaciones claras y accesibles para usuarios no técnicos.</p>
+<p>Además de simplificar la creación de interfaces, Streamlit permite integrar múltiples fuentes de datos, gráficos interactivos y modelos predictivos en una sola aplicación. Esto elimina la necesidad de desarrollar desde cero interfaces personalizadas, acelerando el proceso de presentación y comunicación de resultados.</p>
+<p>Un ejemplo típico es el desarrollo de un dashboard para la exploración de datos de clientes, donde el usuario puede filtrar información por región, rango de fechas o métricas específicas. Streamlit maneja esta interacción de forma eficiente y en tiempo real, permitiendo que los analistas se concentren en el diseño de los insights en lugar de en la complejidad técnica de la interfaz.</p>
+<p>Características clave de Streamlit:</p>
+<ul class="simple">
+<li><p><strong>Facilidad de uso:</strong> Permite desarrollar aplicaciones con solo unos pocos comandos en Python.</p></li>
+<li><p><strong>Gráficos interactivos:</strong> Integración directa con bibliotecas como Matplotlib, Seaborn y Plotly.</p></li>
+<li><p><strong>Despliegue sencillo:</strong> Ofrece herramientas para compartir aplicaciones directamente desde un repositorio.</p></li>
+</ul>
+<p>Estas capacidades convierten a Streamlit en una herramienta esencial para cerrar la brecha entre análisis complejos y la comunicación efectiva de los mismos. Al implementar aplicaciones interactivas, los equipos pueden garantizar que los resultados sean comprensibles y accionables para todos los interesados.</p>
+<figure class="align-default" id="id1">
+<img alt="_images/4-streamlit.png" src="_images/4-streamlit.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Desarrollo de aplicaciones interactivas</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Comunicación efectiva
+Un análisis técnico solo es valioso si puede ser comprendido y utilizado. Las aplicaciones interactivas son el puente entre los datos y las decisiones estratégicas.</p>
+</div>
+</section>
+<section id="integracion-y-operaciones-en-machine-learning">
+<h3>Integración y Operaciones en Machine Learning<a class="headerlink" href="#integracion-y-operaciones-en-machine-learning" title="Link to this heading">#</a></h3>
+<p>Todo lo explorado en este curso converge en un objetivo común: garantizar que los modelos de machine learning no sean solo herramientas aisladas, sino que se conviertan en piezas integradas dentro de sistemas robustos y escalables. A través de la organización en repositorios, la manipulación eficiente de datos y la creación de interfaces interactivas, los estudiantes adquieren los fundamentos necesarios para implementar prácticas modernas de MLOps.</p>
+<p>MLOps no se limita a la construcción de modelos. Va más allá al garantizar que los modelos puedan ser reproducidos, escalados y monitoreados de manera eficiente en entornos reales. Esto incluye:</p>
+<ul class="simple">
+<li><p><strong>Automatización de flujos de trabajo:</strong> Integrar el preprocesamiento de datos, entrenamiento de modelos y despliegue en pipelines reproducibles.</p></li>
+<li><p><strong>Colaboración estructurada:</strong> Utilizar herramientas como Git y gestores de dependencias para asegurar que los proyectos sean comprensibles y mantenibles por cualquier integrante del equipo.</p></li>
+<li><p><strong>Monitorización activa:</strong> Implementar métricas para evaluar el rendimiento de los modelos y reaccionar rápidamente ante cambios en los datos o en las necesidades del negocio.</p></li>
+</ul>
+<p>Por ejemplo, la capacidad de desplegar un modelo en producción con Streamlit no solo facilita su consumo por parte de usuarios finales, sino que también permite integrar visualizaciones y puntos de control que ayuden a mantener su relevancia y eficacia a lo largo del tiempo.</p>
+<p>El objetivo es implementar sistemas completos que puedan adaptarse y evolucionar en entornos dinámicos. Las herramientas y prácticas exploradas aquí constituyen la base para una implementación exitosa de MLOps, donde los modelos se convierten en activos estratégicos sostenibles.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>La importancia de las operaciones
+Un modelo de machine learning que no puede ser reproducido o mantenido se convierte en un activo inútil. MLOps asegura la escalabilidad y el impacto sostenido de las soluciones.</p>
+</div>
+</section>
+</section>
+<section id="metodologia">
+<h2>Metodología<a class="headerlink" href="#metodologia" title="Link to this heading">#</a></h2>
+<p>El contenido está estructurado para avanzar progresivamente, combinando teoría y práctica en cada capítulo. Los casos presentados reflejan problemas reales, mientras que el proyecto final permite integrar todos los conceptos, asegurando una comprensión sólida y la capacidad de aplicación en escenarios profesionales.</p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Integración práctica
+Sin una implementación práctica de los conceptos, las habilidades aprendidas se quedan incompletas. El proyecto final es el espacio para consolidar competencias en un entorno controlado.</p>
+</div>
+<hr class="docutils" />
+<p>Este libro no solo se enfoca en enseñar herramientas, sino en preparar a los lectores para abordar problemas complejos en entornos reales. La gestión eficiente, la comunicación efectiva y la escalabilidad son los pilares de las soluciones que se desarrollarán aquí. Es momento de construir sistemas que soporten el cambio y creen valor sostenido.</p>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="right-next"
+       href="Cuadernos/cap0.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Instalación y configuración previa</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposito">Propósito</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-veremos">¿Qué veremos?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repositorios-y-dependencias">Repositorios y Dependencias</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulacion-de-datos-provenientes-de-fuentes-diversas">Manipulación de Datos Provenientes de Fuentes Diversas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creacion-de-apis-funcionales">Creación de APIs Funcionales</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desarrollo-de-aplicaciones-interactivas">Desarrollo de Aplicaciones Interactivas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integracion-y-operaciones-en-machine-learning">Integración y Operaciones en Machine Learning</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metodologia">Metodología</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Carlos Isaac Zainea Maya
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

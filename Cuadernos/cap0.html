@@ -1,0 +1,795 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Instalación y configuración previa &#8212; Seminario de Programación</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Cuadernos/cap0';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Capítulo 1: Gestión de Versiones y Dependencias con Poetry" href="cap1.html" />
+    <link rel="prev" title="Introducción" href="../intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Seminario de Programación - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Seminario de Programación - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introducción
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Instalación y configuración previa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cap1.html">Capítulo 1: Gestión de Versiones y Dependencias con Poetry</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Cuadernos/cap0.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Instalación y configuración previa</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instalacion-de-visual-studio-code">Instalación de Visual Studio Code</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#en-windows">En Windows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#en-macos">En macOS</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instalacion-de-conda-miniconda-o-anaconda">Instalación de Conda (Miniconda o Anaconda)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>En Windows</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><strong>En macOS</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuracion-de-entornos-conda"><strong>Configuración de Entornos Conda</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instalacion-de-git">Instalación de Git</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><strong>En Windows</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><strong>En macOS</strong></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="instalacion-y-configuracion-previa">
+<h1>Instalación y configuración previa<a class="headerlink" href="#instalacion-y-configuracion-previa" title="Link to this heading">#</a></h1>
+<p>En este apartado se describen los pasos necesarios para instalar y configurar las herramientas que se utilizarán en el curso. Asegúrate de seguir las instrucciones correspondientes a tu sistema operativo.</p>
+<p>Instalaremos las siguientes herramientas:</p>
+<ul class="simple">
+<li><p><strong>Visual Studio Code</strong>: Editor de código fuente con soporte para múltiples lenguajes de programación.</p></li>
+<li><p><strong>Conda</strong>: Gestor de paquetes y entornos virtuales para Python.</p></li>
+<li><p><strong>Git</strong>: Sistema de control de versiones distribuido.</p></li>
+</ul>
+<section id="instalacion-de-visual-studio-code">
+<h2>Instalación de Visual Studio Code<a class="headerlink" href="#instalacion-de-visual-studio-code" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://code.visualstudio.com/Download"><img alt="img" src="../_images/vscode.png" /></a></p>
+<section id="en-windows">
+<h3>En Windows<a class="headerlink" href="#en-windows" title="Link to this heading">#</a></h3>
+<ol class="arabic">
+<li><p><strong>Descarga</strong>: Visita la página oficial de descargas de Visual Studio Code: <a class="reference external" href="https://code.visualstudio.com/Download">https://code.visualstudio.com/Download</a>.</p></li>
+<li><p><strong>Selecciona la versión adecuada</strong>: Elige el instalador que corresponda a tu sistema:</p>
+<ul class="simple">
+<li><p><strong>User Installer</strong> para instalaciones sin privilegios de administrador.</p></li>
+<li><p><strong>System Installer</strong> si tienes privilegios de administrador y deseas que VS Code esté disponible para todos los usuarios del sistema.</p></li>
+</ul>
+</li>
+<li><p><strong>Instalación</strong>:</p>
+<ul class="simple">
+<li><p>Ejecuta el archivo descargado (<code class="docutils literal notranslate"><span class="pre">VSCodeUserSetup-{versión}.exe</span></code> o <code class="docutils literal notranslate"><span class="pre">VSCodeSetup-{versión}.exe</span></code>).</p></li>
+<li><p>Sigue las indicaciones del asistente de instalación.</p></li>
+<li><p>Durante la instalación, puedes seleccionar opciones adicionales, como:</p>
+<ul>
+<li><p>Agregar VS Code al <strong>PATH</strong> para acceder al comando <code class="docutils literal notranslate"><span class="pre">code</span></code> desde la terminal.</p></li>
+<li><p>Asociar VS Code con ciertos tipos de archivos.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Verificación</strong>:</p>
+<ul>
+<li><p>Una vez completada la instalación, abre una terminal (<code class="docutils literal notranslate"><span class="pre">cmd</span></code> o PowerShell) y ejecuta:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>code<span class="w"> </span>--version
+</pre></div>
+</div>
+</li>
+<li><p>Esto debería mostrar la versión instalada de VS Code, confirmando que la instalación fue exitosa.</p></li>
+</ul>
+</li>
+<li><p><strong>Instalación de extensiones recomendadas</strong>:</p>
+<ul class="simple">
+<li><p>Abre VS Code.</p></li>
+<li><p>Navega a la sección de extensiones (ícono de cuadrados en la barra lateral izquierda) y busca e instala las siguientes extensiones:</p>
+<ul>
+<li><p><strong>Python</strong>: Proporciona soporte para desarrollo en Python.</p></li>
+<li><p><strong>GitLens</strong>: Mejora la funcionalidad de Git integrada.</p></li>
+<li><p><strong>Markdown All in One</strong>: Ofrece herramientas para trabajar con archivos Markdown.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="en-macos">
+<h3>En macOS<a class="headerlink" href="#en-macos" title="Link to this heading">#</a></h3>
+<ol class="arabic">
+<li><p><strong>Descarga</strong>: Accede a la página oficial de descargas de Visual Studio Code: <a class="reference external" href="https://code.visualstudio.com/Download">https://code.visualstudio.com/Download</a>.</p></li>
+<li><p><strong>Selecciona la versión adecuada</strong>: Descarga el archivo <code class="docutils literal notranslate"><span class="pre">.zip</span></code> correspondiente a tu arquitectura:</p>
+<ul class="simple">
+<li><p><strong>Intel chip</strong> para Macs con procesadores Intel.</p></li>
+<li><p><strong>Apple silicon</strong> para Macs con procesadores M1 o M2.</p></li>
+<li><p><strong>Universal</strong> para compatibilidad con ambas arquitecturas.</p></li>
+</ul>
+</li>
+<li><p><strong>Instalación</strong>:</p>
+<ul class="simple">
+<li><p>Descomprime el archivo <code class="docutils literal notranslate"><span class="pre">.zip</span></code> descargado.</p></li>
+<li><p>Mueve la aplicación “Visual Studio Code” a la carpeta <strong>Aplicaciones</strong>.</p></li>
+</ul>
+</li>
+<li><p><strong>Configuración del comando <code class="docutils literal notranslate"><span class="pre">code</span></code></strong>:</p>
+<ul class="simple">
+<li><p>Abre VS Code.</p></li>
+<li><p>Presiona <code class="docutils literal notranslate"><span class="pre">Cmd+Shift+P</span></code> para abrir la paleta de comandos.</p></li>
+<li><p>Escribe <code class="docutils literal notranslate"><span class="pre">Shell</span> <span class="pre">Command:</span> <span class="pre">Install</span> <span class="pre">'code'</span> <span class="pre">command</span> <span class="pre">in</span> <span class="pre">PATH</span></code> y selecciona la opción que aparece.</p></li>
+<li><p>Esto permitirá abrir VS Code desde la terminal usando el comando <code class="docutils literal notranslate"><span class="pre">code</span></code>.</p></li>
+</ul>
+</li>
+<li><p><strong>Verificación</strong>:</p>
+<ul>
+<li><p>Abre la aplicación <strong>Terminal</strong> y ejecuta:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>code<span class="w"> </span>--version
+</pre></div>
+</div>
+</li>
+<li><p>Deberías ver la versión instalada de VS Code, confirmando que la instalación fue exitosa.</p></li>
+</ul>
+</li>
+<li><p><strong>Instalación de extensiones recomendadas</strong>:</p>
+<ul class="simple">
+<li><p>Abre VS Code.</p></li>
+<li><p>Dirígete a la sección de extensiones (ícono de cuadrados en la barra lateral izquierda) y busca e instala las siguientes extensiones:</p>
+<ul>
+<li><p><strong>Python</strong>: Proporciona soporte para desarrollo en Python.</p></li>
+<li><p><strong>GitLens</strong>: Mejora la funcionalidad de Git integrada.</p></li>
+<li><p><strong>Markdown All in One</strong>: Ofrece herramientas para trabajar con archivos Markdown.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<section id="instalacion-de-conda-miniconda-o-anaconda">
+<h2>Instalación de Conda (Miniconda o Anaconda)<a class="headerlink" href="#instalacion-de-conda-miniconda-o-anaconda" title="Link to this heading">#</a></h2>
+<p>Conda es un gestor de paquetes y entornos virtuales para Python que facilita la instalación y administración de librerías y dependencias. Puedes instalar Miniconda, una versión ligera de Conda, o Anaconda, que incluye un conjunto de paquetes científicos preinstalados.</p>
+<p><a class="reference external" href="https://www.anaconda.com/"><img alt="img" src="../_images/anaconda.png" /></a></p>
+<section id="id1">
+<h3><strong>En Windows</strong><a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<ol class="arabic">
+<li><p><strong>Descarga</strong>:</p>
+<ul class="simple">
+<li><p>Visita la página oficial de <a class="reference external" href="https://docs.anaconda.com/miniconda/">Miniconda</a> o <a class="reference external" href="https://www.anaconda.com/">Anaconda</a>.</p></li>
+<li><p>Selecciona la versión para Windows que corresponda a tu sistema operativo (32 o 64 bits).</p></li>
+</ul>
+</li>
+<li><p><strong>Instalación</strong>:</p>
+<ul class="simple">
+<li><p>Ejecuta el instalador descargado (<code class="docutils literal notranslate"><span class="pre">Miniconda3-latest-Windows-x86_64.exe</span></code> o el de Anaconda).</p></li>
+<li><p>Acepta los términos de licencia.</p></li>
+<li><p>Selecciona la opción “Instalar solo para mí” o “Instalar para todos los usuarios”.</p></li>
+<li><p><strong>Importante</strong>: Activa la casilla <strong>“Add Miniconda/Anaconda to my PATH environment variable”</strong> para acceder a <code class="docutils literal notranslate"><span class="pre">conda</span></code> desde cualquier terminal.</p></li>
+<li><p>Completa la instalación.</p></li>
+</ul>
+</li>
+<li><p><strong>Verificación</strong>:</p>
+<ul>
+<li><p>Abre una terminal (<code class="docutils literal notranslate"><span class="pre">cmd</span></code> o <code class="docutils literal notranslate"><span class="pre">PowerShell</span></code>).</p></li>
+<li><p>Ejecuta el siguiente comando para verificar que <code class="docutils literal notranslate"><span class="pre">conda</span></code> está instalado correctamente:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>--version
+</pre></div>
+</div>
+</li>
+<li><p>Esto debería mostrar la versión de Conda instalada.</p></li>
+</ul>
+</li>
+<li><p><strong>Configuración inicial</strong>:</p>
+<ul>
+<li><p>Actualiza Conda ejecutando:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>update<span class="w"> </span>conda
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="id2">
+<h3><strong>En macOS</strong><a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<ol class="arabic">
+<li><p><strong>Descarga</strong>:</p>
+<ul class="simple">
+<li><p>Ve a <a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a> o <a class="reference external" href="https://www.anaconda.com/">Anaconda</a>.</p></li>
+<li><p>Descarga el archivo para macOS (Intel o Apple Silicon).</p></li>
+</ul>
+</li>
+<li><p><strong>Instalación</strong>:</p>
+<ul>
+<li><p>Abre la terminal y ejecuta el archivo descargado. Por ejemplo:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bash<span class="w"> </span>Miniconda3-latest-MacOSX-x86_64.sh
+</pre></div>
+</div>
+</li>
+<li><p>Sigue las instrucciones en pantalla:</p>
+<ul class="simple">
+<li><p>Acepta los términos de licencia.</p></li>
+<li><p>Elige la ubicación de instalación predeterminada o personaliza la ruta.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Configuración de PATH</strong>:</p>
+<ul>
+<li><p>Una vez finalizada la instalación, reinicia la terminal o ejecuta:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>~/.bashrc
+</pre></div>
+</div>
+<p>Si usas Zsh (predeterminado en macOS desde Catalina):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>~/.zshrc
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p><strong>Verificación</strong>:</p>
+<ul>
+<li><p>Ejecuta:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>--version
+</pre></div>
+</div>
+</li>
+<li><p>Esto debería mostrar la versión instalada.</p></li>
+</ul>
+</li>
+<li><p><strong>Configuración inicial</strong>:</p>
+<ul>
+<li><p>Actualiza Conda:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>update<span class="w"> </span>conda
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="configuracion-de-entornos-conda">
+<h2><strong>Configuración de Entornos Conda</strong><a class="headerlink" href="#configuracion-de-entornos-conda" title="Link to this heading">#</a></h2>
+<ol class="arabic">
+<li><p><strong>Crear un nuevo entorno</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>mi_entorno<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.10
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Esto crea un entorno llamado <code class="docutils literal notranslate"><span class="pre">mi_entorno</span></code> con Python 3.10.</p></li>
+</ul>
+</li>
+<li><p><strong>Activar el entorno</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>mi_entorno
+</pre></div>
+</div>
+</li>
+<li><p><strong>Desactivar el entorno</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>deactivate
+</pre></div>
+</div>
+</li>
+<li><p><strong>Listar entornos disponibles</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>env<span class="w"> </span>list
+</pre></div>
+</div>
+</li>
+<li><p><strong>Eliminar un entorno</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>remove<span class="w"> </span>--name<span class="w"> </span>mi_entorno<span class="w"> </span>--all
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Esto elimina el entorno <code class="docutils literal notranslate"><span class="pre">mi_entorno</span></code> y todos sus paquetes.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="instalacion-de-git">
+<h2>Instalación de Git<a class="headerlink" href="#instalacion-de-git" title="Link to this heading">#</a></h2>
+<p>Git es un sistema de control de versiones distribuido que permite llevar un registro de los cambios en el código fuente de un proyecto. A continuación, se describen los pasos para instalar Git en Windows, macOS y Linux.</p>
+<p><a class="reference external" href="https://git-scm.com/"><img alt="img" src="../_images/git.png" /></a></p>
+<section id="id3">
+<h3><strong>En Windows</strong><a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<ol class="arabic">
+<li><p><strong>Descarga</strong>:</p>
+<ul class="simple">
+<li><p>Visita la página oficial de <a class="reference external" href="https://git-scm.com/">Git</a>.</p></li>
+<li><p>Descarga el instalador correspondiente a tu sistema operativo (32 o 64 bits).</p></li>
+</ul>
+</li>
+<li><p><strong>Instala Git</strong>:</p>
+<ul class="simple">
+<li><p>Ejecuta el instalador descargado (<code class="docutils literal notranslate"><span class="pre">Git-{versión}-64-bit.exe</span></code>).</p></li>
+<li><p>Acepta los términos de licencia.</p></li>
+<li><p>Selecciona la ubicación de instalación y componentes adicionales.</p></li>
+<li><p><strong>Importante</strong>: Selecciona la opción <strong>“Use Git from the Windows Command Prompt”</strong> para acceder a Git desde la terminal.</p></li>
+<li><p>Completa la instalación.</p></li>
+</ul>
+</li>
+<li><p><strong>Verificación</strong>:</p>
+<ul>
+<li><p>Abre una terminal (<code class="docutils literal notranslate"><span class="pre">cmd</span></code> o <code class="docutils literal notranslate"><span class="pre">PowerShell</span></code>).</p></li>
+<li><p>Ejecuta el siguiente comando para verificar que Git está instalado correctamente:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>--version
+</pre></div>
+</div>
+</li>
+<li><p>Deberías ver la versión de Git instalada.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="id4">
+<h3><strong>En macOS</strong><a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<ol class="arabic">
+<li><p><strong>Instalación con Homebrew</strong>:</p>
+<ul>
+<li><p>Abre la terminal y ejecuta:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>git
+</pre></div>
+</div>
+</li>
+<li><p>Si no tienes Homebrew instalado, sigue las instrucciones en <a class="reference external" href="https://brew.sh/">brew.sh</a>.</p></li>
+</ul>
+</li>
+<li><p><strong>Verificación</strong>:</p>
+<ul>
+<li><p>Ejecuta:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>--version
+</pre></div>
+</div>
+</li>
+<li><p>Deberías ver la versión de Git instalada.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Cuadernos"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introducción</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="cap1.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Capítulo 1: Gestión de Versiones y Dependencias con Poetry</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instalacion-de-visual-studio-code">Instalación de Visual Studio Code</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#en-windows">En Windows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#en-macos">En macOS</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instalacion-de-conda-miniconda-o-anaconda">Instalación de Conda (Miniconda o Anaconda)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>En Windows</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><strong>En macOS</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuracion-de-entornos-conda"><strong>Configuración de Entornos Conda</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instalacion-de-git">Instalación de Git</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><strong>En Windows</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><strong>En macOS</strong></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Carlos Isaac Zainea Maya
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
