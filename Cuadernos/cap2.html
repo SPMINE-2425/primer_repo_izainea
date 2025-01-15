@@ -1,0 +1,1861 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Introducción a Fuentes de Datos &#8212; Seminario de Programación</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Cuadernos/cap2';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Gestión de Versiones y Dependencias con Poetry" href="cap1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Seminario de Programación - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Seminario de Programación - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introducción
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="cap0.html">Instalación y configuración previa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cap1.html">Gestión de Versiones y Dependencias con Poetry</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introducción a Fuentes de Datos</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/git/https%3A//github.com/SPMINE-2425/primer_repo_izainea/tree/page/main?urlpath=lab/tree/Cuadernos/Cuadernos/cap2.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/tree/page/blob/main/Cuadernos/Cuadernos/cap2.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Cuadernos/cap2.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introducción a Fuentes de Datos</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introducción a Fuentes de Datos</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-fuentes-de-datos">Tipos de Fuentes de Datos</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#archivos-planos"><strong>1. Archivos Planos</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ventajas-de-los-archivos-planos"><strong>Ventajas de los archivos planos</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limitaciones"><strong>Limitaciones</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-practico-con-pandas"><strong>Ejemplo práctico con pandas</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bases-de-datos-sql"><strong>2. Bases de Datos SQL</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ventajas-de-las-bases-de-datos-sql"><strong>Ventajas de las bases de datos SQL</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>Limitaciones</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><strong>Ejemplo práctico con pandas</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algunas-queries-utiles-en-sql">Algunas queries útiles en SQL</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#listar-todas-las-tablas-disponibles"><strong>1. Listar todas las tablas disponibles</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#obtener-el-esquema-de-una-tabla"><strong>2. Obtener el esquema de una tabla</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contar-registros-en-una-tabla"><strong>3. Contar registros en una tabla</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mostrar-las-primeras-filas-de-una-tabla"><strong>4. Mostrar las primeras filas de una tabla</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ver-claves-foraneas-en-una-tabla"><strong>5. Ver claves foráneas en una tabla</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#buscar-tablas-que-contienen-una-columna-especifica"><strong>6. Buscar tablas que contienen una columna específica</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#activar-claves-foraneas-si-no-estan-activas"><strong>7. Activar claves foráneas (si no están activas)</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apis"><strong>3. APIs</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#caracteristicas-principales"><strong>Características principales</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ventajas-de-las-apis"><strong>Ventajas de las APIs</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><strong>Limitaciones</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#como-funciona-get"><strong>¿Cómo funciona <code class="docutils literal notranslate"><span class="pre">GET</span></code>?</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><strong>Ejemplo práctico con pandas</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#api-openweathermap">API: OpenWeatherMap</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-avanzado-parametros-en-la-url"><strong>Ejemplo Avanzado: Parámetros en la URL</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manejo-de-errores"><strong>Manejo de Errores</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-practico">Ejercicio Práctico</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivo"><strong>Objetivo</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requisitos-previos"><strong>Requisitos Previos</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-paso-a-paso"><strong>Código Paso a Paso</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuracion-inicial"><strong>1. Configuración Inicial</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solicitar-datos"><strong>2. Solicitar Datos</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convertir-los-datos-a-un-dataframe"><strong>3. Convertir los Datos a un DataFrame</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-de-analisis"><strong>4. Ejemplo de Análisis</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion"><strong>Conclusión</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lo-que-hemos-aprendido"><strong>Lo que hemos aprendido</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-como-herramienta-central"><strong>Pandas como herramienta central</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflexion"><strong>Reflexión</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proximos-pasos"><strong>Próximos Pasos</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introduccion-a-fuentes-de-datos">
+<h1>Introducción a Fuentes de Datos<a class="headerlink" href="#introduccion-a-fuentes-de-datos" title="Link to this heading">#</a></h1>
+<p>En el ámbito de la ciencia de datos y la analítica avanzada, el consumo y la preparación de datos representan etapas fundamentales en cualquier proyecto. Metodologías reconocidas como CRISP-DM, TDSP y KDD enfatizan que la fase inicial de cualquier proyecto de datos comienza con una comprensión clara del problema y el contexto, seguida de una recolección y exploración sistemática de la información disponible. Estas metodologías proporcionan un marco estructurado que asegura que cada paso en el proceso analítico se alinee con los objetivos del negocio o la investigación.</p>
+<p>Por ejemplo, CRISP-DM (Cross Industry Standard Process for Data Mining) establece una primera etapa de comprensión del negocio, que da paso a la exploración y preparación de los datos como un “paso obligatorio” antes de cualquier modelado. De manera similar, TDSP (Team Data Science Process) y KDD (Knowledge Discovery in Databases) destacan la importancia de transformar los datos en formatos limpios y estructurados para maximizar su utilidad y reducir errores en etapas posteriores.</p>
+<figure class="align-default" id="tdsp-lifecycle">
+<img alt="https://learn.microsoft.com/es-es/azure/architecture/data-science-process/media/lifecycle/tdsp-lifecycle2.png" src="https://learn.microsoft.com/es-es/azure/architecture/data-science-process/media/lifecycle/tdsp-lifecycle2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">TDSP: Ciclo de vida del proceso de ciencia de datos.</span><a class="headerlink" href="#tdsp-lifecycle" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="crisp-dm-lifecycle">
+<img alt="https://www.ibm.com/docs/es/SS3RA7_sub/modeler_crispdm_ddita/clementine/images/crisp_process.jpg" src="https://www.ibm.com/docs/es/SS3RA7_sub/modeler_crispdm_ddita/clementine/images/crisp_process.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">CRISP-DM: Ciclo de vida del proceso de minería de datos.</span><a class="headerlink" href="#crisp-dm-lifecycle" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="kdd-process">
+<img alt="https://saludelectronica.com/wp-content/uploads/2021/06/KDD-Salud-Electronica-1024x428.png" src="https://saludelectronica.com/wp-content/uploads/2021/06/KDD-Salud-Electronica-1024x428.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">KDD: Proceso de descubrimiento de conocimiento en bases de datos.</span><a class="headerlink" href="#kdd-process" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>En este capítulo, nos enfocaremos en entender las diferentes fuentes de datos y aprenderemos a consumir y preparar información utilizando herramientas modernas como Python. Exploraremos desde la extracción de datos de APIs y bases de datos SQL hasta la manipulación de archivos planos, alineando estas técnicas con las mejores prácticas promovidas por estas metodologías.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="tipos-de-fuentes-de-datos">
+<h1>Tipos de Fuentes de Datos<a class="headerlink" href="#tipos-de-fuentes-de-datos" title="Link to this heading">#</a></h1>
+<p>Trabajar con datos requiere entender, conocer y estudiar las distintas fuentes de información y cómo adaptarlas a las necesidades de un proyecto. A continuación, exploramos las principales fuentes de datos utilizadas en ciencia de datos, comenzando desde las más simples hasta las más complejas: archivos planos, bases de datos SQL y APIs. Además, discutimos cómo pandas se posiciona como la herramienta central para manipular y transformar datos en Python.</p>
+<div class="admonition-importancia-de-las-fuentes-de-datos admonition">
+<p class="admonition-title">Importancia de las fuentes de datos</p>
+<p>Independientemente del tipo de datos, comprender su origen y estructura es importantísimo para garantizar su correcta preparación y análisis.</p>
+</div>
+<section id="archivos-planos">
+<h2><strong>1. Archivos Planos</strong><a class="headerlink" href="#archivos-planos" title="Link to this heading">#</a></h2>
+<p>Los archivos planos son la forma más básica y accesible de almacenar y compartir datos. Incluyen formatos como:</p>
+<ul class="simple">
+<li><p><strong>CSV (Comma-Separated Values):</strong> Datos tabulares donde cada fila representa un registro y cada columna está separada por comas.</p></li>
+<li><p><strong>JSON (JavaScript Object Notation):</strong> Formato estructurado basado en texto para almacenar datos jerárquicos.</p></li>
+<li><p><strong>Excel:</strong> Hojas de cálculo ampliamente utilizadas en el ámbito empresarial.</p></li>
+</ul>
+<section id="ventajas-de-los-archivos-planos">
+<h3><strong>Ventajas de los archivos planos</strong><a class="headerlink" href="#ventajas-de-los-archivos-planos" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Simplicidad:</strong> Fácil de crear, compartir y visualizar.</p></li>
+<li><p><strong>Compatibilidad:</strong> La mayoría de las herramientas de análisis soportan estos formatos.</p></li>
+<li><p><strong>Rapidez inicial:</strong> Ideal para proyectos pequeños o prototipos.</p></li>
+</ul>
+</section>
+<section id="limitaciones">
+<h3><strong>Limitaciones</strong><a class="headerlink" href="#limitaciones" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Falta de robustez:</strong> Dificultad para manejar grandes volúmenes de datos.</p></li>
+<li><p><strong>Estructura limitada:</strong> No permite relaciones complejas entre datos.</p></li>
+<li><p><strong>Propenso a errores:</strong> Formatos como CSV pueden generar problemas de codificación o separadores incorrectos.</p></li>
+</ul>
+</section>
+<section id="ejemplo-practico-con-pandas">
+<h3><strong>Ejemplo práctico con pandas</strong><a class="headerlink" href="#ejemplo-practico-con-pandas" title="Link to this heading">#</a></h3>
+<p>Pandas permite leer, transformar y analizar archivos planos de manera sencilla:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># Definir la ruta base</span>
+<span class="n">ruta_base</span> <span class="o">=</span> <span class="s2">&quot;../Datos/&quot;</span>
+
+<span class="c1"># Leer el archivo CSV</span>
+<span class="n">df_csv</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ruta_base</span><span class="si">}</span><span class="s2">ejemplo.csv&quot;</span><span class="p">)</span>
+
+<span class="c1"># Leer el archivo JSON fácil de leer</span>
+<span class="n">df_json_facil</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ruta_base</span><span class="si">}</span><span class="s2">ejemplo_facil.json&quot;</span><span class="p">)</span>
+
+<span class="c1"># Leer el archivo JSON semiestructurado</span>
+<span class="n">df_json_complejo</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ruta_base</span><span class="si">}</span><span class="s2">ejemplo_complejo.json&quot;</span><span class="p">)</span>
+
+<span class="c1"># Leer la hoja de Excel</span>
+<span class="n">df_excel</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ruta_base</span><span class="si">}</span><span class="s2">ejemplo.xlsx&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Archivo CSV&quot;</span><span class="p">)</span>
+<span class="n">df_csv</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Archivo CSV
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Edad</th>
+      <th>Ciudad</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Juan</td>
+      <td>28</td>
+      <td>Bogotá</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>María</td>
+      <td>34</td>
+      <td>Medellín</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>Carlos</td>
+      <td>29</td>
+      <td>Cali</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Archivo JSON fácil de leer&quot;</span><span class="p">)</span>
+<span class="n">df_json_facil</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Archivo JSON fácil de leer
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Edad</th>
+      <th>Ciudad</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Juan</td>
+      <td>28</td>
+      <td>Bogotá</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>María</td>
+      <td>34</td>
+      <td>Medellín</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>Carlos</td>
+      <td>29</td>
+      <td>Cali</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Archivo JSON semiestructurado&quot;</span><span class="p">)</span>
+<span class="n">df_json_complejo</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Archivo JSON semiestructurado
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Personas</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>{'ID': 1, 'Detalles': {'Nombre': 'Juan', 'Edad...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>{'ID': 2, 'Detalles': {'Nombre': 'María', 'Eda...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>{'ID': 3, 'Detalles': {'Nombre': 'Carlos', 'Ed...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Archivo Excel&quot;</span><span class="p">)</span>
+<span class="n">df_excel</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Archivo Excel
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Producto</th>
+      <th>Cantidad</th>
+      <th>Precio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Manzanas</td>
+      <td>50</td>
+      <td>1.2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Peras</td>
+      <td>30</td>
+      <td>0.8</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Bananas</td>
+      <td>20</td>
+      <td>0.5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="bases-de-datos-sql">
+<h2><strong>2. Bases de Datos SQL</strong><a class="headerlink" href="#bases-de-datos-sql" title="Link to this heading">#</a></h2>
+<p>Las bases de datos relacionales son ideales para almacenar grandes volúmenes de datos estructurados. Estas utilizan SQL (Structured Query Language) para definir, manipular y consultar datos. Ejemplos comunes incluyen MySQL, PostgreSQL, SQLite y Microsoft SQL Server.</p>
+<section id="ventajas-de-las-bases-de-datos-sql">
+<h3><strong>Ventajas de las bases de datos SQL</strong><a class="headerlink" href="#ventajas-de-las-bases-de-datos-sql" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Eficiencia:</strong> Capacidad para realizar consultas rápidas y optimizadas.</p></li>
+<li><p><strong>Estructura robusta:</strong> Permite establecer relaciones entre tablas (normalización).</p></li>
+<li><p><strong>Escalabilidad:</strong> Soporte para grandes volúmenes de datos.</p></li>
+</ul>
+</section>
+<section id="id1">
+<h3><strong>Limitaciones</strong><a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Configuración inicial:</strong> Requiere mayor esfuerzo para instalar y diseñar la base de datos.</p></li>
+<li><p><strong>Curva de aprendizaje:</strong> Necesidad de aprender SQL para consultas avanzadas.</p></li>
+<li><p><strong>Dependencia del sistema:</strong> Las bases de datos locales pueden no ser portables sin copias de respaldo.</p></li>
+</ul>
+</section>
+<section id="id2">
+<h3><strong>Ejemplo práctico con pandas</strong><a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>Pandas facilita la integración con bases de datos utilizando librerías como <code class="docutils literal notranslate"><span class="pre">sqlite3</span></code> o <code class="docutils literal notranslate"><span class="pre">SQLAlchemy</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
+
+<span class="c1"># Conexión a una base de datos SQLite</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;../Datos/ejemplo.db&#39;</span><span class="p">)</span>
+
+<span class="c1"># Ejecutar una consulta SQL y cargar los datos en un DataFrame</span>
+<span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM PERSONAS&quot;</span>
+<span class="n">df_sql</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql_query</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
+
+<span class="n">df_sql</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Edad</th>
+      <th>Ciudad</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Juan</td>
+      <td>28</td>
+      <td>Bogotá</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>María</td>
+      <td>34</td>
+      <td>Medellín</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>Carlos</td>
+      <td>29</td>
+      <td>Cali</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="algunas-queries-utiles-en-sql">
+<h2>Algunas queries útiles en SQL<a class="headerlink" href="#algunas-queries-utiles-en-sql" title="Link to this heading">#</a></h2>
+<section id="listar-todas-las-tablas-disponibles">
+<h3><strong>1. Listar todas las tablas disponibles</strong><a class="headerlink" href="#listar-todas-las-tablas-disponibles" title="Link to this heading">#</a></h3>
+<p>Esto te permitirá conocer las tablas presentes en la base de datos:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
+
+<span class="c1"># Conectar a la base de datos</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;../Datos/ejemplo.db&quot;</span><span class="p">)</span>
+<span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+<span class="c1"># Consultar las tablas disponibles</span>
+<span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT name FROM sqlite_master WHERE type=&#39;table&#39;;&quot;</span><span class="p">)</span>
+<span class="n">tablas</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tablas disponibles:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">tabla</span> <span class="ow">in</span> <span class="n">tablas</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">tabla</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tablas disponibles:
+Personas
+Productos
+Ventas
+Clientes
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="obtener-el-esquema-de-una-tabla">
+<h3><strong>2. Obtener el esquema de una tabla</strong><a class="headerlink" href="#obtener-el-esquema-de-una-tabla" title="Link to this heading">#</a></h3>
+<p>Si deseas revisar las columnas y sus tipos de datos en una tabla específica:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Conectar a la base de datos</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;../Datos/ejemplo.db&quot;</span><span class="p">)</span>
+<span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+<span class="c1"># Esquema de la tabla &quot;Personas&quot;</span>
+<span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;PRAGMA table_info(&#39;Personas&#39;);&quot;</span><span class="p">)</span>
+<span class="n">esquema</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Esquema de la tabla &#39;Personas&#39;:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">columna</span> <span class="ow">in</span> <span class="n">esquema</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Columna: </span><span class="si">{</span><span class="n">columna</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">, Tipo: </span><span class="si">{</span><span class="n">columna</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s2">, Permite NULL: </span><span class="si">{</span><span class="n">columna</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Esquema de la tabla &#39;Personas&#39;:
+Columna: ID, Tipo: INTEGER, Permite NULL: 0
+Columna: Nombre, Tipo: TEXT, Permite NULL: 1
+Columna: Edad, Tipo: INTEGER, Permite NULL: 1
+Columna: Ciudad, Tipo: TEXT, Permite NULL: 1
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="contar-registros-en-una-tabla">
+<h3><strong>3. Contar registros en una tabla</strong><a class="headerlink" href="#contar-registros-en-una-tabla" title="Link to this heading">#</a></h3>
+<p>Esto es útil para ver cuántos datos hay en cada tabla:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Conectar a la base de datos</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;../Datos/ejemplo.db&quot;</span><span class="p">)</span>
+<span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+<span class="c1"># Contar registros en la tabla &quot;Personas&quot;</span>
+<span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT COUNT(*) FROM Personas;&quot;</span><span class="p">)</span>
+<span class="n">conteo</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Registros en la tabla &#39;Personas&#39;: </span><span class="si">{</span><span class="n">conteo</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Registros en la tabla &#39;Personas&#39;: 3
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mostrar-las-primeras-filas-de-una-tabla">
+<h3><strong>4. Mostrar las primeras filas de una tabla</strong><a class="headerlink" href="#mostrar-las-primeras-filas-de-una-tabla" title="Link to this heading">#</a></h3>
+<p>Revisar una muestra rápida de los datos en una tabla:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Conectar a la base de datos</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;../Datos/ejemplo.db&quot;</span><span class="p">)</span>
+<span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+<span class="c1"># Consultar las primeras 5 filas de la tabla &quot;Personas&quot;</span>
+<span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM Personas LIMIT 5;&quot;</span><span class="p">)</span>
+<span class="n">filas</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Primeras 5 filas de la tabla &#39;Personas&#39;:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">fila</span> <span class="ow">in</span> <span class="n">filas</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">fila</span><span class="p">)</span>
+
+<span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Primeras 5 filas de la tabla &#39;Personas&#39;:
+(1, &#39;Juan&#39;, 28, &#39;Bogotá&#39;)
+(2, &#39;María&#39;, 34, &#39;Medellín&#39;)
+(3, &#39;Carlos&#39;, 29, &#39;Cali&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ver-claves-foraneas-en-una-tabla">
+<h3><strong>5. Ver claves foráneas en una tabla</strong><a class="headerlink" href="#ver-claves-foraneas-en-una-tabla" title="Link to this heading">#</a></h3>
+<p>Para inspeccionar las relaciones de una tabla con otras tablas mediante claves foráneas:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;../Datos/ejemplo.db&quot;</span><span class="p">)</span>
+<span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+<span class="c1"># Ver las claves foráneas de la tabla &quot;Ventas&quot;</span>
+<span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;PRAGMA foreign_key_list(&#39;Ventas&#39;);&quot;</span><span class="p">)</span>
+<span class="n">foreign_keys</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Claves foráneas de la tabla &#39;Ventas&#39;:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">fk</span> <span class="ow">in</span> <span class="n">foreign_keys</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Desde </span><span class="si">{</span><span class="n">fk</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s2"> hacia </span><span class="si">{</span><span class="n">fk</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">fk</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Claves foráneas de la tabla &#39;Ventas&#39;:
+Desde ProductoID hacia Productos.ProductoID
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="buscar-tablas-que-contienen-una-columna-especifica">
+<h3><strong>6. Buscar tablas que contienen una columna específica</strong><a class="headerlink" href="#buscar-tablas-que-contienen-una-columna-especifica" title="Link to this heading">#</a></h3>
+<p>Para identificar tablas que tienen una columna particular:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Conectar a la base de datos</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;../Datos/ejemplo.db&quot;</span><span class="p">)</span>
+<span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+<span class="c1"># Buscar tablas que tienen una columna llamada &quot;Nombre&quot;</span>
+<span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT name, sql FROM sqlite_master WHERE sql LIKE &#39;%Nombre%&#39;;&quot;</span><span class="p">)</span>
+<span class="n">resultados</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tablas que contienen la columna &#39;Nombre&#39;:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">tabla</span><span class="p">,</span> <span class="n">sql</span> <span class="ow">in</span> <span class="n">resultados</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tabla: </span><span class="si">{</span><span class="n">tabla</span><span class="si">}</span><span class="se">\n</span><span class="s2">Definición: </span><span class="si">{</span><span class="n">sql</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tablas que contienen la columna &#39;Nombre&#39;:
+Tabla: Personas
+Definición: CREATE TABLE Personas (
+    ID INTEGER PRIMARY KEY,
+    Nombre TEXT NOT NULL,
+    Edad INTEGER NOT NULL,
+    Ciudad TEXT NOT NULL
+)
+
+Tabla: Productos
+Definición: CREATE TABLE Productos (
+    ProductoID INTEGER PRIMARY KEY,
+    Nombre TEXT NOT NULL,
+    Categoria TEXT NOT NULL,
+    Precio REAL NOT NULL
+)
+
+Tabla: Clientes
+Definición: CREATE TABLE Clientes (
+    ClienteID INTEGER PRIMARY KEY,
+    Nombre TEXT NOT NULL,
+    Ciudad TEXT NOT NULL,
+    Telefono TEXT
+)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="activar-claves-foraneas-si-no-estan-activas">
+<h3><strong>7. Activar claves foráneas (si no están activas)</strong><a class="headerlink" href="#activar-claves-foraneas-si-no-estan-activas" title="Link to this heading">#</a></h3>
+<p>En SQLite, las claves foráneas no están activas por defecto. Puedes activarlas con este comando:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Conectar a la base de datos</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;../Datos/ejemplo.db&quot;</span><span class="p">)</span>
+<span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+<span class="c1"># Activar claves foráneas</span>
+<span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;PRAGMA foreign_keys = ON;&quot;</span><span class="p">)</span>
+
+<span class="c1"># Verificar si están activas</span>
+<span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;PRAGMA foreign_keys;&quot;</span><span class="p">)</span>
+<span class="n">estado</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Claves foráneas activas: </span><span class="si">{</span><span class="nb">bool</span><span class="p">(</span><span class="n">estado</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Claves foráneas activas: True
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="apis">
+<h2><strong>3. APIs</strong><a class="headerlink" href="#apis" title="Link to this heading">#</a></h2>
+<p>Las APIs (Application Programming Interfaces) permiten acceder a datos en tiempo real desde servicios web o sistemas externos. Son la opción más compleja pero también la más versátil, ya que facilitan la integración entre diferentes plataformas.</p>
+<section id="caracteristicas-principales">
+<h3><strong>Características principales</strong><a class="headerlink" href="#caracteristicas-principales" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Formatos de datos comunes:</strong> JSON y XML.</p></li>
+<li><p><strong>Interacción mediante métodos HTTP:</strong> <code class="docutils literal notranslate"><span class="pre">GET</span></code>, <code class="docutils literal notranslate"><span class="pre">POST</span></code>, <code class="docutils literal notranslate"><span class="pre">PUT</span></code>, <code class="docutils literal notranslate"><span class="pre">DELETE</span></code>.</p></li>
+<li><p><strong>Autenticación:</strong> Muchas APIs requieren claves de acceso o tokens para garantizar la seguridad.</p></li>
+</ul>
+</section>
+<section id="ventajas-de-las-apis">
+<h3><strong>Ventajas de las APIs</strong><a class="headerlink" href="#ventajas-de-las-apis" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Acceso a datos dinámicos:</strong> Información actualizada constantemente.</p></li>
+<li><p><strong>Interoperabilidad:</strong> Conexión entre sistemas heterogéneos.</p></li>
+<li><p><strong>Escalabilidad:</strong> Ideal para aplicaciones que necesitan consumir grandes volúmenes de datos en tiempo real.</p></li>
+</ul>
+</section>
+<section id="id3">
+<h3><strong>Limitaciones</strong><a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Dependencia de la red:</strong> Requiere conexión a Internet.</p></li>
+<li><p><strong>Complejidad adicional:</strong> Necesidad de manejar autenticaciones, errores de red y límites de consulta.</p></li>
+<li><p><strong>Velocidad:</strong> Puede ser más lento que trabajar con datos locales.</p></li>
+</ul>
+</section>
+<section id="como-funciona-get">
+<h3><strong>¿Cómo funciona <code class="docutils literal notranslate"><span class="pre">GET</span></code>?</strong><a class="headerlink" href="#como-funciona-get" title="Link to this heading">#</a></h3>
+<p>Como se comentó, una API  permite que diferentes aplicaciones se comuniquen entre sí mediante solicitudes y respuestas. Un método común es <code class="docutils literal notranslate"><span class="pre">GET</span></code>, que se utiliza para recuperar datos del servidor.</p>
+<p>Con <code class="docutils literal notranslate"><span class="pre">GET</span></code>:</p>
+<ul class="simple">
+<li><p>Enviamos una solicitud a una URL.</p></li>
+<li><p>El servidor devuelve los datos solicitados (generalmente en formato JSON).</p></li>
+</ul>
+</section>
+<section id="id4">
+<h3><strong>Ejemplo práctico con pandas</strong><a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>Pandas puede procesar datos obtenidos de una API tras realizar la consulta con <code class="docutils literal notranslate"><span class="pre">requests</span></code>:</p>
+<p><strong>API: <a class="reference external" href="https://jsonplaceholder.typicode.com/">JSON Placeholder</a></strong>
+Esta API gratuita proporciona datos ficticios para practicar.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="c1"># URL de la API</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://jsonplaceholder.typicode.com/posts/1&quot;</span>
+
+<span class="c1"># Realizar la solicitud GET</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="c1"># Verificar el estado de la respuesta</span>
+<span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Datos recibidos:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error al realizar la solicitud: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Datos recibidos:
+{&#39;userId&#39;: 1, &#39;id&#39;: 1, &#39;title&#39;: &#39;sunt aut facere repellat provident occaecati excepturi optio reprehenderit&#39;, &#39;body&#39;: &#39;quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<p>El API envia datos en formato JSON, que pandas puede leer y transformar en un DataFrame. A continuación, se muestra un ejemplo de cómo consumir datos de la API de JSON Placeholder:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### JSONPlaceholder convirtiendo contenido a DataFrame</span>
+
+<span class="n">DF</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">(),</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">DF</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>userId</th>
+      <th>id</th>
+      <th>title</th>
+      <th>body</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1</td>
+      <td>sunt aut facere repellat provident occaecati e...</td>
+      <td>quia et suscipit\nsuscipit recusandae consequu...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="api-openweathermap">
+<h3>API: <a class="reference external" href="https://openweathermap.org/api">OpenWeatherMap</a><a class="headerlink" href="#api-openweathermap" title="Link to this heading">#</a></h3>
+<p>Esta API proporciona datos climáticos en tiempo real. Necesitarás una <strong>clave API gratuita</strong> para usarla.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="c1"># Configurar la URL y los parámetros</span>
+<span class="n">api_key</span> <span class="o">=</span> <span class="s2">&quot;TU_CLAVE_API_AQUI&quot;</span>  <span class="c1"># Reemplaza con tu clave API</span>
+<span class="n">ciudad</span> <span class="o">=</span> <span class="s2">&quot;Bogotá&quot;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;http://api.openweathermap.org/data/2.5/weather?q=</span><span class="si">{</span><span class="n">ciudad</span><span class="si">}</span><span class="s2">&amp;appid=</span><span class="si">{</span><span class="n">api_key</span><span class="si">}</span><span class="s2">&amp;units=metric&quot;</span>
+
+<span class="c1"># Realizar la solicitud GET</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="c1"># Procesar la respuesta</span>
+<span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+    <span class="n">datos</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Clima en </span><span class="si">{</span><span class="n">ciudad</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Temperatura: </span><span class="si">{</span><span class="n">datos</span><span class="p">[</span><span class="s1">&#39;main&#39;</span><span class="p">][</span><span class="s1">&#39;temp&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Descripción: </span><span class="si">{</span><span class="n">datos</span><span class="p">[</span><span class="s1">&#39;weather&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;description&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error al obtener datos: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error al obtener datos: 401
+</pre></div>
+</div>
+</div>
+</div>
+<p>La respuesta 401 se da cuando la clave API no es válida. Por lo tanto hay que solicitar una clave API en la página de OpenWeatherMap y reemplazarla en el código.</p>
+<div class="tip admonition">
+<p class="admonition-title">Clave API</p>
+<p>La clave API es un identificador único que te permite acceder a los servicios de una API. Es importante mantenerla segura y no compartirla públicamente.</p>
+</div>
+</section>
+<section id="ejemplo-avanzado-parametros-en-la-url">
+<h3><strong>Ejemplo Avanzado: Parámetros en la URL</strong><a class="headerlink" href="#ejemplo-avanzado-parametros-en-la-url" title="Link to this heading">#</a></h3>
+<p>Algunas APIs requieren que enviemos parámetros en la solicitud. Aquí usamos la API de JSON Placeholder para filtrar datos.</p>
+<p>En este caso, se envía una solicitud a la URL <code class="docutils literal notranslate"><span class="pre">https://jsonplaceholder.typicode.com/posts?userId=1</span></code> para obtener publicaciones del usuario con ID 1.</p>
+<div class="tip admonition">
+<p class="admonition-title">Parámetros en la URL</p>
+<p>Los parámetros en la URL permiten filtrar, ordenar o limitar los datos devueltos por la API.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="c1"># URL de la API con parámetros</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://jsonplaceholder.typicode.com/posts&quot;</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;userId&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+
+<span class="c1"># Realizar la solicitud GET con parámetros</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+
+<span class="c1"># Procesar la respuesta</span>
+<span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+    <span class="n">datos</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Posts del usuario 1:&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">post</span> <span class="ow">in</span> <span class="n">datos</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- </span><span class="si">{</span><span class="n">post</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error al realizar la solicitud: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Posts del usuario 1:
+- sunt aut facere repellat provident occaecati excepturi optio reprehenderit
+- qui est esse
+- ea molestias quasi exercitationem repellat qui ipsa sit aut
+- eum et est occaecati
+- nesciunt quas odio
+- dolorem eum magni eos aperiam quia
+- magnam facilis autem
+- dolorem dolore est ipsam
+- nesciunt iure omnis dolorem tempora et accusantium
+- optio molestias id quia eum
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="manejo-de-errores">
+<h3><strong>Manejo de Errores</strong><a class="headerlink" href="#manejo-de-errores" title="Link to this heading">#</a></h3>
+<p>Siempre debemos manejar errores para evitar que nuestro programa falle en caso de problemas con la API.</p>
+<div class="tip admonition">
+<p class="admonition-title">Códigos de Estado HTTP</p>
+<p>Los códigos de estado HTTP indican si una solicitud fue exitosa o si ocurrió un error. Por ejemplo, 200 significa “OK”, mientras que 404 indica “No encontrado”. En general, los códigos 2xx indican éxito, 4xx errores del cliente y 5xx errores del servidor.</p>
+<p>Una tabla completa de códigos de estado HTTP:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Código</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>200</p></td>
+<td><p>OK</p></td>
+</tr>
+<tr class="row-odd"><td><p>201</p></td>
+<td><p>Creado</p></td>
+</tr>
+<tr class="row-even"><td><p>204</p></td>
+<td><p>Sin contenido</p></td>
+</tr>
+<tr class="row-odd"><td><p>400</p></td>
+<td><p>Solicitud incorrecta</p></td>
+</tr>
+<tr class="row-even"><td><p>401</p></td>
+<td><p>No autorizado</p></td>
+</tr>
+<tr class="row-odd"><td><p>403</p></td>
+<td><p>Prohibido</p></td>
+</tr>
+<tr class="row-even"><td><p>404</p></td>
+<td><p>No encontrado</p></td>
+</tr>
+<tr class="row-odd"><td><p>405</p></td>
+<td><p>Método no permitido</p></td>
+</tr>
+<tr class="row-even"><td><p>429</p></td>
+<td><p>Demasiadas solicitudes</p></td>
+</tr>
+<tr class="row-odd"><td><p>500</p></td>
+<td><p>Error interno del servidor</p></td>
+</tr>
+<tr class="row-even"><td><p>502</p></td>
+<td><p>Puerta de enlace incorrecta</p></td>
+</tr>
+<tr class="row-odd"><td><p>503</p></td>
+<td><p>Servicio no disponible</p></td>
+</tr>
+<tr class="row-even"><td><p>504</p></td>
+<td><p>Tiempo de espera agotado</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Más información sobre códigos de estado HTTP <a class="reference external" href="https://developer.mozilla.org/es/docs/Web/HTTP/Status">aquí</a>.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="c1"># URL incorrecta (simulando un error)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://jsonplaceholder.typicode.com/incorrect_endpoint&quot;</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>  <span class="c1"># Genera una excepción si el estado no es 200</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Datos recibidos:&quot;</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+<span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">HTTPError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;HTTPError: </span><span class="si">{</span><span class="n">err</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">RequestException</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error en la solicitud: </span><span class="si">{</span><span class="n">err</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HTTPError: 404 Client Error: Not Found for url: https://jsonplaceholder.typicode.com/incorrect_endpoint
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="ejercicio-practico">
+<h2>Ejercicio Práctico<a class="headerlink" href="#ejercicio-practico" title="Link to this heading">#</a></h2>
+<p>Vamos a hacer un ejemplo práctico utilizando la plataforma <strong>Socrata</strong> para consumir datos abiertos de <strong><a class="reference external" href="http://datosabiertos.gov.co">datosabiertos.gov.co</a></strong>.</p>
+</section>
+<hr class="docutils" />
+<section id="objetivo">
+<h2><strong>Objetivo</strong><a class="headerlink" href="#objetivo" title="Link to this heading">#</a></h2>
+<p>Usar la API de Socrata para consultar datos públicos de <strong><a class="reference external" href="http://datosabiertos.gov.co">datosabiertos.gov.co</a></strong>, como por ejemplo el registro de accidentes de tránsito, y analizar los resultados con Python.</p>
+</section>
+<hr class="docutils" />
+<section id="requisitos-previos">
+<h2><strong>Requisitos Previos</strong><a class="headerlink" href="#requisitos-previos" title="Link to this heading">#</a></h2>
+<ol class="arabic">
+<li><p><strong>Librerías necesarias:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">requests</span></code>: Para realizar las solicitudes HTTP.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pandas</span></code>: Para manipular los datos.</p></li>
+</ul>
+</li>
+<li><p><strong>App Token (opcional):</strong> Aunque la API de Socrata permite consultas sin autenticación, es mejor registrarse y obtener un token para evitar limitaciones de uso.</p>
+<p>Puedes registrarte y obtener un token en <a class="reference external" href="https://www.datos.gov.co">datosabiertos.gov.co</a>.</p>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="codigo-paso-a-paso">
+<h2><strong>Código Paso a Paso</strong><a class="headerlink" href="#codigo-paso-a-paso" title="Link to this heading">#</a></h2>
+<section id="configuracion-inicial">
+<h3><strong>1. Configuración Inicial</strong><a class="headerlink" href="#configuracion-inicial" title="Link to this heading">#</a></h3>
+<p>Definimos los detalles básicos de la API y el App Token.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># URL base de Socrata (dataset de lesiones personales y accidentes de tránsito en Colombia)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://www.datos.gov.co/resource/72sg-cybi.json&quot;</span>
+
+<span class="c1"># Tu App Token (opcional)</span>
+<span class="n">app_token</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># Reemplazar token o dejar como None</span>
+
+<span class="c1"># Configurar encabezados para la solicitud</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;X-App-Token&quot;</span><span class="p">:</span> <span class="n">app_token</span>
+<span class="p">}</span> <span class="k">if</span> <span class="n">app_token</span> <span class="k">else</span> <span class="p">{}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="solicitar-datos">
+<h3><strong>2. Solicitar Datos</strong><a class="headerlink" href="#solicitar-datos" title="Link to this heading">#</a></h3>
+<p>Consultamos los datos de la API usando un filtro opcional para obtener, por ejemplo, solo los accidentes registrados en el año 2022.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Parámetros para filtrar los datos</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;$limit&quot;</span><span class="p">:</span> <span class="mi">5000</span><span class="p">,</span>  <span class="c1"># Limitar a 5000 resultados (cambiar según necesidades)</span>
+    <span class="s2">&quot;$where&quot;</span><span class="p">:</span> <span class="s2">&quot;municipio = &#39;BOGOTÁ D.C. (CT)&#39;&quot;</span>  <span class="c1"># Filtrar por el año 2022</span>
+<span class="p">}</span>
+
+<span class="c1"># Realizar la solicitud GET</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+
+<span class="c1"># Verificar el estado de la respuesta</span>
+<span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+    <span class="n">datos</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Datos recibidos exitosamente.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error al acceder a la API: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">datos</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Datos recibidos exitosamente.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="convertir-los-datos-a-un-dataframe">
+<h3><strong>3. Convertir los Datos a un DataFrame</strong><a class="headerlink" href="#convertir-los-datos-a-un-dataframe" title="Link to this heading">#</a></h3>
+<p>Una vez obtenidos los datos, los transformamos en un <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> de pandas para facilitar su análisis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convertir los datos a un DataFrame</span>
+<span class="k">if</span> <span class="n">datos</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">datos</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Primeras filas del DataFrame:&quot;</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No se recibieron datos.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Primeras filas del DataFrame:
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>departamento</th>
+      <th>municipio</th>
+      <th>codigo_dane</th>
+      <th>armas_medios</th>
+      <th>fecha_hecho</th>
+      <th>genero</th>
+      <th>grupo_etario</th>
+      <th>descripci_n_conducta</th>
+      <th>cantidad</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>CUNDINAMARCA</td>
+      <td>BOGOTÁ D.C. (CT)</td>
+      <td>11001000</td>
+      <td>ARMA BLANCA / CORTOPUNZANTE</td>
+      <td>1/01/2010</td>
+      <td>FEMENINO</td>
+      <td>ADOLESCENTES</td>
+      <td>LESIONES PERSONALES</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>CUNDINAMARCA</td>
+      <td>BOGOTÁ D.C. (CT)</td>
+      <td>11001000</td>
+      <td>ARMA BLANCA / CORTOPUNZANTE</td>
+      <td>1/01/2010</td>
+      <td>FEMENINO</td>
+      <td>ADULTOS</td>
+      <td>LESIONES PERSONALES</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>CUNDINAMARCA</td>
+      <td>BOGOTÁ D.C. (CT)</td>
+      <td>11001000</td>
+      <td>ARMA BLANCA / CORTOPUNZANTE</td>
+      <td>1/01/2010</td>
+      <td>MASCULINO</td>
+      <td>ADOLESCENTES</td>
+      <td>LESIONES PERSONALES</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>CUNDINAMARCA</td>
+      <td>BOGOTÁ D.C. (CT)</td>
+      <td>11001000</td>
+      <td>ARMA BLANCA / CORTOPUNZANTE</td>
+      <td>1/01/2010</td>
+      <td>MASCULINO</td>
+      <td>ADULTOS</td>
+      <td>LESIONES PERSONALES</td>
+      <td>29</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>CUNDINAMARCA</td>
+      <td>BOGOTÁ D.C. (CT)</td>
+      <td>11001000</td>
+      <td>ARMA DE FUEGO</td>
+      <td>1/01/2010</td>
+      <td>MASCULINO</td>
+      <td>ADULTOS</td>
+      <td>LESIONES PERSONALES</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="ejemplo-de-analisis">
+<h3><strong>4. Ejemplo de Análisis</strong><a class="headerlink" href="#ejemplo-de-analisis" title="Link to this heading">#</a></h3>
+<p>Podemos realizar algunas operaciones básicas, como contar los registros por tipo de accidente o por departamento.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">df</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+    <span class="c1"># Verificar columnas disponibles</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Columnas disponibles:&quot;</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+
+    <span class="c1"># Contar registros por tipo de accidente</span>
+    <span class="k">if</span> <span class="s2">&quot;armas_medios&quot;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Cantidad de accidentes por tipo:&quot;</span><span class="p">)</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;armas_medios&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+
+    <span class="c1"># Contar registros por departamento</span>
+    <span class="k">if</span> <span class="s2">&quot;departamento&quot;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Cantidad de accidentes por departamento:&quot;</span><span class="p">)</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;departamento&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Columnas disponibles:
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;departamento&#39;, &#39;municipio&#39;, &#39;codigo_dane&#39;, &#39;armas_medios&#39;,
+       &#39;fecha_hecho&#39;, &#39;genero&#39;, &#39;grupo_etario&#39;, &#39;descripci_n_conducta&#39;,
+       &#39;cantidad&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cantidad de accidentes por tipo:
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>armas_medios
+CONTUNDENTES                   1769
+VEHICULO                       1096
+ARMA BLANCA / CORTOPUNZANTE     907
+ARMA DE FUEGO                   499
+MOTO                            438
+PUNZANTES                       121
+PERRO                            60
+BICICLETA                        38
+ESCOPOLAMINA                     17
+GRANADA DE MANO                  11
+SIN EMPLEO DE ARMAS               8
+QUIMICOS                          7
+GASES                             5
+NO REPORTA                        4
+COMBUSTIBLE                       3
+VENENO                            3
+AGUA CALIENTE                     3
+JERINGA                           2
+SUSTANCIAS TOXICAS                2
+MEDICAMENTOS                      2
+CARRO BOMBA                       2
+PAPA EXPLOSIVA                    2
+LICOR ADULTERADO                  1
+Name: count, dtype: int64
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cantidad de accidentes por departamento:
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>departamento
+CUNDINAMARCA    5000
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="conclusion">
+<h3><strong>Conclusión</strong><a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h3>
+<p>Trabajar con fuentes de datos diversas es una habilidad esencial en cualquier proyecto de ciencia de datos o programación avanzada. En este capítulo, hemos explorado tres tipos principales de fuentes de datos: <strong>archivos planos</strong>, <strong>bases de datos SQL</strong>, y <strong>APIs</strong>, destacando sus características, ventajas y cómo interactuar con ellas utilizando herramientas modernas como Python y pandas.</p>
+</section>
+<hr class="docutils" />
+<section id="lo-que-hemos-aprendido">
+<h3><strong>Lo que hemos aprendido</strong><a class="headerlink" href="#lo-que-hemos-aprendido" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Archivos Planos:</strong></p>
+<ul class="simple">
+<li><p>Son la forma más simple de almacenar y compartir datos.</p></li>
+<li><p>Con pandas, es fácil leer y transformar formatos como CSV, JSON y Excel para un análisis rápido.</p></li>
+<li><p>Aunque son útiles para prototipos, no son ideales para manejar grandes volúmenes de datos.</p></li>
+</ul>
+</li>
+<li><p><strong>Bases de Datos SQL:</strong></p>
+<ul class="simple">
+<li><p>Ofrecen una estructura robusta para almacenar y consultar datos a gran escala.</p></li>
+<li><p>Usar SQLite como ejemplo demostró cómo integrar datos relacionales con pandas para realizar análisis avanzados.</p></li>
+<li><p>Las bases de datos son fundamentales para proyectos donde los datos evolucionan constantemente.</p></li>
+</ul>
+</li>
+<li><p><strong>APIs:</strong></p>
+<ul class="simple">
+<li><p>Permiten acceder a datos dinámicos y en tiempo real desde servicios externos.</p></li>
+<li><p>Aprendimos a realizar solicitudes <code class="docutils literal notranslate"><span class="pre">GET</span></code>, manejar parámetros, y trabajar con APIs públicas como OpenWeatherMap y Socrata.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="pandas-como-herramienta-central">
+<h3><strong>Pandas como herramienta central</strong><a class="headerlink" href="#pandas-como-herramienta-central" title="Link to this heading">#</a></h3>
+<p>Pandas se destacó en cada sección como una herramienta clave para:</p>
+<ul class="simple">
+<li><p><strong>Integrar fuentes de datos</strong>: Ya sea leyendo archivos locales, conectándose a bases de datos o procesando datos JSON de una API.</p></li>
+<li><p><strong>Preparar los datos</strong>: Limpieza, transformación y organización son pasos obligatorios para garantizar la calidad de los análisis.</p></li>
+<li><p><strong>Análisis eficiente</strong>: Proporcionando una interfaz sencilla para explorar y obtener insights rápidamente.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="reflexion">
+<h3><strong>Reflexión</strong><a class="headerlink" href="#reflexion" title="Link to this heading">#</a></h3>
+<p>El consumo y la preparación de datos no son solo pasos iniciales en cualquier proyecto de datos, sino que también determinan la calidad y el éxito del análisis posterior. Las metodologías como <strong>CRISP-DM</strong>, <strong>TDSP</strong> y <strong>KDD</strong> nos recuerdan que un flujo de trabajo bien estructurado comienza siempre con una sólida comprensión de las fuentes de datos y sus características.</p>
+</section>
+<hr class="docutils" />
+<section id="proximos-pasos">
+<h3><strong>Próximos Pasos</strong><a class="headerlink" href="#proximos-pasos" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Automatización de Procesos:</strong></p>
+<ul class="simple">
+<li><p>Crear pipelines de datos que integren múltiples fuentes.</p></li>
+<li><p>Incorporar autenticación segura para APIs más avanzadas.</p></li>
+</ul>
+</li>
+<li><p><strong>Escalabilidad:</strong></p>
+<ul class="simple">
+<li><p>Migrar de archivos planos a bases de datos más robustas como PostgreSQL o MySQL para proyectos más grandes.</p></li>
+</ul>
+</li>
+<li><p><strong>Visualización:</strong></p>
+<ul class="simple">
+<li><p>Traducir los datos preparados en gráficos interactivos usando herramientas como Matplotlib, Seaborn o Streamlit.</p></li>
+</ul>
+</li>
+<li><p><strong>MLOps:</strong></p>
+<ul class="simple">
+<li><p>Preparar los datos para flujos de machine learning aplicando las mejores prácticas en limpieza y estructuración.</p></li>
+</ul>
+</li>
+</ol>
+<hr class="docutils" />
+<p>Este capítulo ha sentado las bases para manejar datos de diversas fuentes, integrarlos de manera eficiente y prepararlos para análisis más complejos. Desde aquí, el camino se amplía hacia proyectos más desafiantes que requieran escalabilidad, interacción dinámica y aplicaciones prácticas. ¡Vamos a seguir construyendo soluciones basadas en datos! 🎯</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Cuadernos"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="cap1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Gestión de Versiones y Dependencias con Poetry</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introducción a Fuentes de Datos</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-fuentes-de-datos">Tipos de Fuentes de Datos</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#archivos-planos"><strong>1. Archivos Planos</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ventajas-de-los-archivos-planos"><strong>Ventajas de los archivos planos</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limitaciones"><strong>Limitaciones</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-practico-con-pandas"><strong>Ejemplo práctico con pandas</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bases-de-datos-sql"><strong>2. Bases de Datos SQL</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ventajas-de-las-bases-de-datos-sql"><strong>Ventajas de las bases de datos SQL</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>Limitaciones</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><strong>Ejemplo práctico con pandas</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algunas-queries-utiles-en-sql">Algunas queries útiles en SQL</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#listar-todas-las-tablas-disponibles"><strong>1. Listar todas las tablas disponibles</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#obtener-el-esquema-de-una-tabla"><strong>2. Obtener el esquema de una tabla</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contar-registros-en-una-tabla"><strong>3. Contar registros en una tabla</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mostrar-las-primeras-filas-de-una-tabla"><strong>4. Mostrar las primeras filas de una tabla</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ver-claves-foraneas-en-una-tabla"><strong>5. Ver claves foráneas en una tabla</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#buscar-tablas-que-contienen-una-columna-especifica"><strong>6. Buscar tablas que contienen una columna específica</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#activar-claves-foraneas-si-no-estan-activas"><strong>7. Activar claves foráneas (si no están activas)</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apis"><strong>3. APIs</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#caracteristicas-principales"><strong>Características principales</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ventajas-de-las-apis"><strong>Ventajas de las APIs</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><strong>Limitaciones</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#como-funciona-get"><strong>¿Cómo funciona <code class="docutils literal notranslate"><span class="pre">GET</span></code>?</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><strong>Ejemplo práctico con pandas</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#api-openweathermap">API: OpenWeatherMap</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-avanzado-parametros-en-la-url"><strong>Ejemplo Avanzado: Parámetros en la URL</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manejo-de-errores"><strong>Manejo de Errores</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-practico">Ejercicio Práctico</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivo"><strong>Objetivo</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requisitos-previos"><strong>Requisitos Previos</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-paso-a-paso"><strong>Código Paso a Paso</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuracion-inicial"><strong>1. Configuración Inicial</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solicitar-datos"><strong>2. Solicitar Datos</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convertir-los-datos-a-un-dataframe"><strong>3. Convertir los Datos a un DataFrame</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-de-analisis"><strong>4. Ejemplo de Análisis</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion"><strong>Conclusión</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lo-que-hemos-aprendido"><strong>Lo que hemos aprendido</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-como-herramienta-central"><strong>Pandas como herramienta central</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflexion"><strong>Reflexión</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proximos-pasos"><strong>Próximos Pasos</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Carlos Isaac Zainea Maya
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

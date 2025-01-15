@@ -1,4 +1,4 @@
-# Capítulo 1: Gestión de Versiones y Dependencias con Poetry
+# Gestión de Versiones y Dependencias con Poetry
 
 Este capítulo aborda la gestión de dependencias y versiones utilizando **Poetry**, junto con entornos de Python manejados por **Anaconda**. El repositorio base disponible en [https://github.com/SPMINE-2425/primer_repo_izainea](https://github.com/SPMINE-2425/primer_repo_izainea) sirve como punto de partida para proyectos organizados y reproducibles.
 
